@@ -27,10 +27,16 @@ class Otp extends Page implements HasForms
     public function form(Schema $schema): Schema
     {
         return $schema->schema([
-            OneTimeCodeInput::make('otp_code')
+            OneTimeCodeInput::make('otp_code_8')
                 ->length(8)
                 ->helperText('`->length(8)` and `->default(12345678)`')
                 ->default(12345678)
+                ->required(),
+
+            OneTimeCodeInput::make('otp_code_6')
+                ->length(6)
+                ->helperText('`->length(6)` and `->default(123456)`')
+                ->default(123456)
                 ->required(),
         ])
             ->statePath('data');
